@@ -1,15 +1,15 @@
-import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
-
-dotenv.config();
+import express, { Express } from "express";
+import { PORT } from "./constants";
+import router from "./routes";
+import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware";
+import authMiddleware from "./middlewares/authMiddleware";
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
 
-app.get("/", (_req: Request, res: Response) => {
-  res.send("Server started successfully!");
+app.listen(PORT, () => {
+  console.log(`[server]: Server is running at http://localhost:${PORT}`);
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+app.use(authMiddleware);
+app.use(router);
+app.use(errorHandlerMiddleware);
