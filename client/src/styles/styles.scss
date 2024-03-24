@@ -3,9 +3,14 @@
 @import './settings/colors';
 
 // import componentes
+@import './app';
 @import './components/layout';
 @import './components/input';
 @import './components/breadcumb';
+@import './components/titleItem';
+@import './components/card';
 
 
 // imports views
+@import './pages/itemInfo';
+@import './pages/itemList';
