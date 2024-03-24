@@ -1,0 +1,34 @@
+.input-container{
+    display: flex;
+    width: 70%;
+
+    input {
+        border: 0px;
+        border-radius: 3px 0px 0px 3px;
+        padding: 10px;
+        outline: none;
+        width: 100%;
+        font-size: 18px;
+
+        &::placeholder {
+            color: $lightGrey
+        }
+    }
+
+    button {
+        border: 0px;
+        border-radius: 0px 3px 3px 0px;
+        padding: 13px;
+        cursor: pointer;
+        background-color: $white;
+
+        &:hover {
+            background-color: darken($color: $white, $amount: 5);
+        }
+
+        img {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
