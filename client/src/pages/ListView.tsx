@@ -9,7 +9,7 @@ function ListView() {
   const searchParams = search.split("=")[1];
   console.log({ searchParams });
 
-  const { data, isLoading } = useFetchItems(searchParams);
+  const { items, categories, isLoading } = useFetchItems(searchParams);
 
   function showInfo(id: string) {
     navigate(`/items/${id}`);
@@ -17,13 +17,13 @@ function ListView() {
 
   return (
     <div className="item-list">
-      {data && !isLoading && (
+      {items && !isLoading && (
         <>
           <div className="uno">
             <Breadcumb items={["Juegos", "Cocina", "Hogas"]} />
           </div>
           <div className="dos">
-            <ListItems items={data.data.items} showInfo={showInfo} />
+            <ListItems items={items} showInfo={showInfo} />
           </div>
         </>
       )}

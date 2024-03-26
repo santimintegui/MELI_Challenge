@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import { getItems } from "../services/getItems";
+import { ItemsResponse } from "../types/Responses";
 
 export function useFetchItems(searchParams: string) {
-  const [data, setData] = useState<any[] | null>(null);
+  const [data, setData] = useState<ItemsResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/items?q=${searchParams}`)
-      .then((response) => response.json())
-      .then((data) => {
+    getItems(searchParams)
+      .then(({ data }) => {
         setData(data);
       })
       .finally(() => {
@@ -19,5 +20,10 @@ export function useFetchItems(searchParams: string) {
       });
   }, [searchParams]);
 
-  return { data, isLoading, error };
+  return {
+    items: data?.items.slice(0, 4),
+    categories: data?.categories,
+    isLoading,
+    error,
+  };
 }

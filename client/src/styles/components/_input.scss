@@ -20,10 +20,10 @@
         border-radius: 0px 3px 3px 0px;
         padding: 13px;
         cursor: pointer;
-        background-color: $white;
+        background-color: $backgroundGrey;
 
         &:hover {
-            background-color: darken($color: $white, $amount: 5);
+            background-color: darken($color: $backgroundGrey, $amount: 5);
         }
 
         img {

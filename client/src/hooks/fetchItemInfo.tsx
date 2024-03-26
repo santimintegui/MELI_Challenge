@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { getItemById } from "../services/getItemById";
+import { ItemByIdResponse } from "../types/Responses";
 
 export function useFetchItemInfo(id: string) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ItemByIdResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/items/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
+    getItemById(id)
+      .then(({ data }) => {
         setData(data);
       })
       .finally(() => {
@@ -15,5 +16,5 @@ export function useFetchItemInfo(id: string) {
       });
   }, [id]);
 
-  return { data: data, isLoading };
+  return { item: data?.item, isLoading };
 }

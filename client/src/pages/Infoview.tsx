@@ -5,19 +5,18 @@ import Breadcumb from "../components/Breadcumb";
 
 function InfoView() {
   const { id } = useParams();
-  const { data, isLoading } = useFetchItemInfo(id ?? "");
-  console.log({ data });
+  const { item, isLoading } = useFetchItemInfo(id ?? "");
 
   return (
     <div className="item-list">
-      {!isLoading && (
+      {item && !isLoading && (
         <>
           <div className="uno">
-            <Breadcumb items={["Juegos", "Cocina", "Hogas"]} />
+            <Breadcumb items={["prueba 1", "prueba 2"]} />
           </div>
           <div className="dos">
             <div className="item-container">
-              {!isLoading && <Item item={data.data.item} />}
+              <Item item={item} />
             </div>
           </div>
         </>
