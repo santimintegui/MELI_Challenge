@@ -2,14 +2,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useFetchItems } from "../hooks/fetchItems";
 import ListItems from "../components/ListItems";
 import Breadcumb from "../components/Breadcumb";
+import NotFoundResults from "../components/NotFoundResults";
 
 function ListView() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const searchParams = search.split("=")[1];
-  console.log({ searchParams });
-
-  const { items, categories, isLoading } = useFetchItems(searchParams);
+  const { items, categories, isLoading, error } = useFetchItems(searchParams);
+  const showList = items && categories && !isLoading;
 
   function showInfo(id: string) {
     navigate(`/items/${id}`);
@@ -17,15 +17,19 @@ function ListView() {
 
   return (
     <div className="item-list">
-      {items && !isLoading && (
-        <>
-          <div className="uno">
-            <Breadcumb items={["Juegos", "Cocina", "Hogas"]} />
-          </div>
-          <div className="dos">
-            <ListItems items={items} showInfo={showInfo} />
-          </div>
-        </>
+      {error ? (
+        <NotFoundResults />
+      ) : (
+        showList && (
+          <>
+            <div className="uno">
+              <Breadcumb items={categories} />
+            </div>
+            <div className="dos">
+              <ListItems items={items} showInfo={showInfo} />
+            </div>
+          </>
+        )
       )}
     </div>
   );

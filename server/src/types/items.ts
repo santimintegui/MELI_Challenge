@@ -7,7 +7,6 @@ export type Item = {
     free_shipping: boolean;
     sold_quantity?: number;
     description?: string;
-    category_id?: string;
 }
 
 export type MELIITEM = {

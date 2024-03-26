@@ -1,5 +1,4 @@
 import { AUTHOR_LASTNAME, AUTHOR_NAME } from "./constants";
-import { CATEGORY } from "./types/categories";
 import { Item, MELIITEM } from "./types/items";
 import { SEARCHDATA } from "./types/search";
 
@@ -8,12 +7,12 @@ const author = {
     lastname: AUTHOR_LASTNAME
 }
 
-const parseSearchData = ({results, available_filters}: SEARCHDATA) => {
+const parseSearchData = ({results, filters}: SEARCHDATA) => {
     const itemsData = results;
-    const categoriesData = available_filters.find(({ id }) => id === 'category')?.values || [];
+    const categoriesFilter = filters.find(({ id }:any) => id === 'category');
 
     const items = _parseItemsData(itemsData);
-    const categories = _parseCategoriesData(categoriesData);
+    const categories = _parseCategoriesData(categoriesFilter);
 
     const parseData = {
         author,
@@ -57,10 +56,13 @@ const _parseItemsData = (items: MELIITEM[]) => {
     });
 }
 
-const _parseCategoriesData = (cateogries: CATEGORY[]) => {
-    return cateogries
-    .sort((a, b) => b.results - a.results)
-    .map(({id}) => id);
+const _parseCategoriesData = (cateogries: any) => {
+    if(!cateogries){
+        return [];
+    }
+    const {path_from_root} = cateogries.values[0];
+    return path_from_root
+    .map(({name}:any) => name);
 }
 
 export {

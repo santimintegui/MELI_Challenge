@@ -8,14 +8,15 @@ export function useFetchItems(searchParams: string) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getItems(searchParams)
+    getItems(searchParams ?? "")
       .then(({ data }) => {
         setData(data);
       })
       .finally(() => {
+        setError(false);
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         setError(true);
       });
   }, [searchParams]);

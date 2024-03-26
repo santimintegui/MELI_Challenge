@@ -3,6 +3,7 @@ import { Item } from "./Item";
 export type ItemByIdResponse = {
     author: Author;
     item: Item;
+    categories: string[];
 };
 
 export type ItemsResponse = {

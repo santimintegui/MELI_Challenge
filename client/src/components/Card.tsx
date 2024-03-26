@@ -1,5 +1,6 @@
 import { Item } from "../types/Item";
 import freeShippingLogo from "../assets/shipping.png";
+import { formatPrice } from "../utils";
 
 type CardProps = {
   item: Item;
@@ -14,7 +15,7 @@ function Card({ item, isLast }: CardProps) {
       <img src={picture} height={180} width={180} />
       <div>
         <div className="shipping">
-          $ <a>{price.amount}</a>
+          $ <a>{formatPrice(price.amount)}</a>
           {free_shipping && (
             <img src={freeShippingLogo} height={20} width={20} />
           )}

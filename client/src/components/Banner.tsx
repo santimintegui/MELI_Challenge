@@ -15,11 +15,16 @@ function Banner() {
     navigate(`/items?search=${value}`);
   }
 
+  function goHome() {
+    setValue("");
+    navigate("/");
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="banner-container">
-          <img src={MeliLogo} height={40} onClick={() => navigate("/")} />
+          <img src={MeliLogo} height={40} onClick={goHome} />
           <Input value={value} handleChange={setValue} />
         </div>
       </form>

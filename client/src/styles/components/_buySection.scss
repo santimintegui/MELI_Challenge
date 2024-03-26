@@ -2,13 +2,13 @@
     grid-area: 1 / 3 / 3 / 4;
     display: flex;
     flex-direction: column;
-    // align-items: stretch;
-    padding-top: 32px;
-    width: 80%;
+    padding: 32px;
+    width: fit-content;
     gap: 32px;
 
     .price{
         display: flex;
+        width: max-content;
 
         .amount{
             font-size: 46px;

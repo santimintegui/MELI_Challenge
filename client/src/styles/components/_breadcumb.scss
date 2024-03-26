@@ -6,4 +6,9 @@
     .last{
         font-weight: bold;
     }
+
+    &.empty{
+        height: 48px;
+        padding: 0;
+    }
 }

@@ -9,7 +9,6 @@ type ErrorResponse ={
 
 const errorHandlerMiddleware = (err: ErrorResponse, _req: Request, res: Response, _next: NextFunction) => {
     const { error, status, message } = err;
-    console.log({ error, status, message });
     if (error && status && message) {
         return res.status(status).json({ error, message });
     }
