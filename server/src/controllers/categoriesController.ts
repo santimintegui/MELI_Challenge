@@ -6,7 +6,7 @@ export const getCategoriesById = async (req: Request, res: Response, next: NextF
     try {
         const id = req.params.id;
         const category = await fetchCategoryById(id);
-        const path: string[] = category.path_from_root.map((cat: any) => cat.name);
+        const path: string[] = category.path_from_root.map((cat) => cat.name);
         if(path.length === 0) {
             return res.status(404).json({ message: MESSAGES.ERROR.NOT_FOUND, data: []});
         }

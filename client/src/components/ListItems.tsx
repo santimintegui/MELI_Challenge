@@ -9,7 +9,7 @@ type ListItemsProps = {
 function ListItems({ items, showInfo }: ListItemsProps) {
   return (
     <div>
-      {items.map((item: any, index: number) => (
+      {items.map((item: Item, index: number) => (
         <div key={item.id} onClick={() => showInfo(item.id)}>
           <Card item={item} isLast={index === items.length - 1} />
         </div>

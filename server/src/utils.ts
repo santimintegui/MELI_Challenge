@@ -1,6 +1,6 @@
 import { AUTHOR_LASTNAME, AUTHOR_NAME } from "./constants";
 import { Item, MeliItem } from "./types/items";
-import { SearchData } from "./types/search";
+import { Filters, SearchData } from "./types/search";
 
 const author = {
     name: AUTHOR_NAME,
@@ -9,7 +9,7 @@ const author = {
 
 const parseSearchData = ({results, filters}: SearchData) => {
     const itemsData = results;
-    const categoriesFilter = filters.find(({ id }:any) => id === 'category');
+    const categoriesFilter = filters.find(({ id }) => id === 'category');
 
     const items = _parseItemsData(itemsData);
     const categories = _parseCategoriesData(categoriesFilter);
@@ -56,13 +56,13 @@ const _parseItemsData = (items: MeliItem[]) => {
     });
 }
 
-const _parseCategoriesData = (cateogries: any) => {
-    if(!cateogries){
+const _parseCategoriesData = (cateogriesFilter: Filters | undefined) => {
+    if(!cateogriesFilter){
         return [];
     }
-    const {path_from_root} = cateogries.values[0];
+    const {path_from_root} = cateogriesFilter.values[0];
     return path_from_root
-    .map(({name}:any) => name);
+    .map(({name}) => name);
 }
 
 export {
