@@ -1,28 +1,27 @@
-import { ITEM } from "../types/Item";
+import { Item } from "../types/Item";
 import freeShippingLogo from "../assets/shipping.png";
 
 type CardProps = {
-  item: ITEM;
+  item: Item;
+  isLast: boolean;
 };
 
-function Card(item: CardProps) {
-  console.log({ item });
-
-  const { id, price, title, free_shipping, picture } = item.item;
+function Card({ item, isLast }: CardProps) {
+  const { price, title, free_shipping, picture, location = "" } = item;
 
   return (
-    <div className="card-container">
+    <div className={`card-container ${isLast ? "last" : ""}`}>
       <img src={picture} height={180} width={180} />
       <div className="middle">
         <div className="price">
-          $ <a className="amount">{price.amount}</a>
+          $ <a>{price.amount}</a>
           {free_shipping && (
             <img src={freeShippingLogo} height={20} width={20} />
           )}
         </div>
         <h1>{title}</h1>
       </div>
-      <div>location</div>
+      <div className="location">{location}</div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import MeliLogo from "../assets/logo_ML.png";
 import Input from "./Input";
 import { useNavigate } from "react-router-dom";
 
-export function Layout({ children }: any) {
+function Banner() {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
 
@@ -16,14 +16,15 @@ export function Layout({ children }: any) {
   }
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="banner-container">
-          <img src={MeliLogo} height={40} />
+          <img src={MeliLogo} height={40} onClick={() => navigate("/")} />
           <Input value={value} handleChange={setValue} />
         </div>
       </form>
-      <div className="children-container">{children}</div>
-    </>
+    </div>
   );
 }
+
+export default Banner;

@@ -3,12 +3,13 @@ import { useFetchItems } from "../hooks/fetchItems";
 import ListItems from "../components/ListItems";
 import Breadcumb from "../components/Breadcumb";
 
-function ItemList() {
+function ListView() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const searchParams = search.split("=")[1];
+  console.log({ searchParams });
 
-  const { items, isLoading } = useFetchItems(searchParams);
+  const { data, isLoading } = useFetchItems(searchParams);
 
   function showInfo(id: string) {
     navigate(`/items/${id}`);
@@ -16,13 +17,13 @@ function ItemList() {
 
   return (
     <div className="item-list">
-      {!isLoading && (
+      {data && !isLoading && (
         <>
           <div className="uno">
             <Breadcumb items={["Juegos", "Cocina", "Hogas"]} />
           </div>
           <div className="dos">
-            <ListItems items={items} showInfo={showInfo} />
+            <ListItems items={data.data.items} showInfo={showInfo} />
           </div>
         </>
       )}
@@ -30,4 +31,4 @@ function ItemList() {
   );
 }
 
-export default ItemList;
+export default ListView;

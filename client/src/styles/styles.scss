@@ -4,12 +4,11 @@
 
 // import componentes
 @import './app';
-@import './components/layout';
+@import './components/banner';
 @import './components/input';
 @import './components/breadcumb';
-@import './components/titleItem';
+@import './components/buySection';
 @import './components/card';
-
 
 // imports views
 @import './pages/itemInfo';

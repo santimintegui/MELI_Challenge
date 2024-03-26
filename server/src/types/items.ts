@@ -1,4 +1,4 @@
-export type ITEM = {
+export type Item = {
     id: string;
     title: string;
     price: PRICE;
@@ -22,6 +22,7 @@ export type MELIITEM = {
     }
     initial_quantity: number;
     category_id: string;
+    location: {city:{id: string, name: string}};
 }
 
 export type DESCRIPTIONRESPONSE = {

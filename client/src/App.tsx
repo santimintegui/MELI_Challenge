@@ -1,37 +1,18 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Layout } from "./components/Layout";
-import ItemInfo from "./pages/ItemInfo";
+import Banner from "./components/Banner";
+import InfoView from "./pages/Infoview";
+import ListView from "./pages/ListView";
 import "./styles/styles.scss";
-import ItemList from "./pages/List";
 
 function App() {
   return (
     <div className="app-container">
       <BrowserRouter>
+        <Banner />
         <Routes>
-          <Route path="/" element={<Layout />} />
-          <Route
-            path="/items"
-            element={
-              <>
-                <Layout>
-                  <ItemList />
-                </Layout>
-              </>
-            }
-          />
-          <Route
-            path="/items/:id"
-            element={
-              <>
-                <Layout>
-                  <ItemInfo image={""} />
-                </Layout>
-              </>
-            }
-          />
-          <Route path="*" element={<div>Error 404 not found</div>} />
+          <Route path="/" element={<></>} />
+          <Route path="/items" element={<ListView />} />
+          <Route path="/items/:id" element={<InfoView />} />
         </Routes>
       </BrowserRouter>
     </div>

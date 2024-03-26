@@ -1,21 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useFetchItems(searchParams: string) {
-  const [items, setItems] = useState([]);
+  const [data, setData] = useState<any[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const fetchItems = useCallback(async () => {
-    const response = await fetch(
-      `http://localhost:3000/api/items?q=${searchParams}`
-    );
-    const { data } = await response.json();
-    setItems(data.items.splice(0, 4));
-    setIsLoading(false);
-  }, [searchParams]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetchItems();
+    fetch(`http://localhost:3000/api/items?q=${searchParams}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(true);
+      });
   }, [searchParams]);
 
-  return { items, isLoading };
+  return { data, isLoading, error };
 }

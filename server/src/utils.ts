@@ -1,6 +1,6 @@
 import { AUTHOR_LASTNAME, AUTHOR_NAME } from "./constants";
 import { CATEGORY } from "./types/categories";
-import { ITEM, MELIITEM } from "./types/items";
+import { Item, MELIITEM } from "./types/items";
 import { SEARCHDATA } from "./types/search";
 
 const author = {
@@ -32,13 +32,14 @@ const parseItemData = (item: MELIITEM, description: string) => {
             sold_quantity: item.initial_quantity,
             description: description,
             category_id: item.category_id
-            } as ITEM
+            } as Item
         }
         return parseData;
 }
 
 const _parseItemsData = (items: MELIITEM[]) => {
-    return items.map(({ id, title, currency_id, price, thumbnail, condition, shipping }) => {
+    return items.map(({ id, title, currency_id, price, thumbnail, condition, shipping, location }) => {
+        const city = location?.city?.name;
         const priceParts = price.toString().split('.');
         return {
             id: id,
@@ -50,8 +51,9 @@ const _parseItemsData = (items: MELIITEM[]) => {
             },
             picture: thumbnail,
             condition: condition,
-            free_shipping: shipping.free_shipping
-        } as ITEM;
+            free_shipping: shipping.free_shipping,
+            location: city
+        } as Item;
     });
 }
 
