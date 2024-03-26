@@ -12,8 +12,8 @@ function Card({ item, isLast }: CardProps) {
   return (
     <div className={`card-container ${isLast ? "last" : ""}`}>
       <img src={picture} height={180} width={180} />
-      <div className="middle">
-        <div className="price">
+      <div>
+        <div className="shipping">
           $ <a>{price.amount}</a>
           {free_shipping && (
             <img src={freeShippingLogo} height={20} width={20} />
