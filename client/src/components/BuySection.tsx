@@ -18,7 +18,8 @@ function BuySection({
     <div className="title">
       <div>
         <a>
-          {mappingCondition(condition)} - {sold_quantity} vendidos
+          {mappingCondition(condition)} -{" "}
+          {formatPrice(sold_quantity.toString())} vendidos
         </a>
         <h1>{title}</h1>
       </div>
