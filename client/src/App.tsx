@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Banner from "./components/Banner";
 import InfoView from "./pages/Infoview";
 import ListView from "./pages/ListView";
@@ -13,6 +13,7 @@ function App() {
           <Route path="/" element={<></>} />
           <Route path="/items" element={<ListView />} />
           <Route path="/items/:id" element={<InfoView />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { fetchItemById, fetchItems, fetchDescriptionByItemId } from "../services/itemsServices";
 import { parseSearchData, parseItemData } from "../utils";
 import { MESSAGES } from '../constants';
-import { DESCRIPTIONRESPONSE, MELIITEM } from '../types/items';
+import { DescriptionResponse, MeliItem } from '../types/items';
 import { fetchCategoryById } from '../services/categoriesServices';
 
 export const getItems = async (req: Request, res: Response, next: NextFunction) => {
@@ -35,10 +35,10 @@ export const getItemById = async (req: Request, res: Response, next: NextFunctio
             return res.status(400).json({ message: MESSAGES.ERROR.BAD_REQUEST });
         }
 
-        const itemPromise: Promise<MELIITEM> = new Promise((resolve, _reject) => {
+        const itemPromise: Promise<MeliItem> = new Promise((resolve, _reject) => {
             resolve(fetchItemById(id));
         });
-        const descriptionPromise: Promise<DESCRIPTIONRESPONSE> = new Promise((resolve, _reject) => {
+        const descriptionPromise: Promise<DescriptionResponse> = new Promise((resolve, _reject) => {
             resolve(fetchDescriptionByItemId(id));
         });
         const [item, description] = await Promise.all([itemPromise, descriptionPromise]);

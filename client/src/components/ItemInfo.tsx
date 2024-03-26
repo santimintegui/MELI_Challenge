@@ -8,9 +8,9 @@ type ItemInfoProps = {
 function ItemInfo({
   item: {
     picture,
-    description = "",
+    description = "No contiene descripcion",
     price,
-    condition = "",
+    condition = "not_specified",
     sold_quantity = 0,
     title,
   },
@@ -31,7 +31,7 @@ function ItemInfo({
       />
       <div className="description">
         <h1>Descripcion del producto</h1>
-        <p>{description}</p>
+        <p>{description === "" ? "No contiene descripcion" : description}</p>
       </div>
     </>
   );

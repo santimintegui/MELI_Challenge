@@ -1,7 +1,7 @@
 export type Item = {
     id: string;
     title: string;
-    price: PRICE;
+    price: Price;
     picture: string;
     condition: string;
     free_shipping: boolean;
@@ -9,7 +9,7 @@ export type Item = {
     description?: string;
 }
 
-export type MELIITEM = {
+export type MeliItem = {
     id: string;
     title: string;
     currency_id: string;
@@ -24,12 +24,12 @@ export type MELIITEM = {
     location: {city:{id: string, name: string}};
 }
 
-export type DESCRIPTIONRESPONSE = {
+export type DescriptionResponse = {
     plain_text: string;
 
 }
 
-type PRICE = {
+type Price = {
     currency: string;
     amount: string;
     decimals: string;

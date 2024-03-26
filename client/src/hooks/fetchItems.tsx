@@ -22,7 +22,7 @@ export function useFetchItems(searchParams: string) {
   }, [searchParams]);
 
   return {
-    items: data?.items.slice(0, 4),
+    items: data?.items,
     categories: data?.categories,
     isLoading,
     error,

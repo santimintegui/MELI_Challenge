@@ -1,6 +1,6 @@
-import { MELIITEM } from "./items";
+import { MeliItem } from "./items";
 
-export type SEARCHDATA = {
-    results: MELIITEM[];
+export type SearchData = {
+    results: MeliItem[];
     filters: any;
 }

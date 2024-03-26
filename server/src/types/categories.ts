@@ -1,18 +1,18 @@
-export type MELICATEGORY = {
+export type MeliCategory = {
     id: string;
     name: string;
     type: string;
-    values: CATEGORY[];
-    path_from_root: CATEGORYPATH[];
+    values: Category[];
+    path_from_root: CategoryPath[];
 }
 
-export type CATEGORY = {
+export type Category = {
     id: string;
     name: string;
     results: number;
 }
 
-type CATEGORYPATH = {
+type CategoryPath = {
     id: string;
     name: string;
 }
