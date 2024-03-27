@@ -4,7 +4,6 @@ export type Item = {
     title: string;
     free_shipping: boolean;
     picture: string;
-    // extender esta interface?
     description?: string;
     sold_quantity?: number;
     condition?: string;

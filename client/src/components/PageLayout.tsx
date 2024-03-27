@@ -1,4 +1,4 @@
-import Breadcumb from "./Breadcumb";
+import Breadcumb from "./common/Breadcumb";
 import NotFoundResults from "./NotFoundResults";
 
 type PageLayoutProps = {
@@ -19,7 +19,7 @@ function PageLayout({
   return (
     <div className="layout-container">
       {isLoading ? (
-        <div className="spinner-container">
+        <div className="spinner-container" data-testid="spinner">
           <div className="spinner"></div>
         </div>
       ) : error ? (

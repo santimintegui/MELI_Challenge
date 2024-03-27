@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getItemById } from "../services/getItemById";
+import { getItemById } from "../services/itemsServices";
 import { ItemByIdResponse } from "../types/Responses";
 
 export function useFetchItemInfo(id: string) {
@@ -17,8 +17,6 @@ export function useFetchItemInfo(id: string) {
         setIsLoading(false);
       })
       .catch(() => {
-        console.log("ERRR");
-
         setError(true);
       });
   }, [id]);

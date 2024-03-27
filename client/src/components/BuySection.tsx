@@ -1,5 +1,5 @@
 import { Price } from "../types/Item";
-import { formatPrice, mappingCondition } from "../utils";
+import { formatPrice, mappingCondition } from "../utils/utils";
 
 type TitleItemProps = {
   title: string;

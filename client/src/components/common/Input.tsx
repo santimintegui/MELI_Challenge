@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from "react";
-import searchLogo from "../assets/search.png";
+import searchLogo from "../../assets/search.png";
 
 type InputProps = {
   value: string;

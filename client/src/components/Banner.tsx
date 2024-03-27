@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MeliLogo from "../assets/logo_ML.png";
-import Input from "./Input";
+import Input from "./common/Input";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Banner() {
@@ -26,7 +26,12 @@ function Banner() {
     <div>
       <form onSubmit={handleSubmit}>
         <div className="banner-container">
-          <img src={MeliLogo} height={40} onClick={goHome} />
+          <img
+            src={MeliLogo}
+            height={40}
+            onClick={goHome}
+            alt="Mercado Libre Logo"
+          />
           <Input value={value} handleChange={setValue} />
         </div>
       </form>

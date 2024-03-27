@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getItems } from "../services/getItems";
+import { getItems } from "../services/itemsServices";
 import { ItemsResponse } from "../types/Responses";
 
 export function useFetchItems(searchParams: string) {
