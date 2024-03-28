@@ -1,25 +1,31 @@
 # MELI_Challenge
 
-## Requirements
-Node v21
+# Requirements
+Node >= v21
 
-## Setup
+# Setup
+You should create .env like .env.example. If the .env is empty those are the defaults values:
+- Server PORT:  3000
+- Server APIURL: https://api.mercadolibre.com
+- Client API_URL: http://localhost:3000/api
 
-Server:
+## Server:
 - cd server
 - npm install
 - npm run dev
 
-Client:
+## Client:
 - cd client
 - npm install
 - npm run dev
+(Client run in PORT: 5173)
 
 ## Run test in Client
+- cd client
 - npm run test
 
-# Server Endpoint documentation
-- Search: /api/items?q=​:query
+## Server Endpoint documentation
+- Search items: `/api/items?q=​:query`
 
 Response example:
 ```
@@ -92,7 +98,7 @@ Response example:
 }
 ```
 
-- Item: /api/items/​:id
+- Get item by Id: `/api/items/​:id`
 Response example:
 ```
 {
